@@ -84,20 +84,58 @@ public class SortTest {
 		Random r = new Random();
 		Sort.quicksort(arr, r);
 		assertEquals(Arrays.toString(sorted), Arrays.toString(arr));
-		
-		int a = 123456789;
-		System.out.println(Sort.getDigit(a, 21));
 	}
 	
-	/*@Test (timeout = 1000)
+	@Test (timeout = 1000)
 	public void simpleTestMergeSort() {
 		Integer[] arr = makeSimpleIntArray();
 		arr = (Integer[]) Sort.mergesort(arr);
 		assertEquals(SORTED_SIMPLE_INT_ARRAY, Arrays.toString(arr));
-	}*/
+	}
+	
+	@Test (timeout = 5000)
+	public void testMergeSortBash() {
+		Integer[] arr = createGodAwfulArray();
+		Integer[] sorted = new Integer[arr.length];
+		for (int i = 0; i < arr.length; i++)
+			sorted[i] = arr[i];
+		Arrays.sort(sorted);
+		
+		arr = Sort.mergesort(arr);
+		assertEquals(Arrays.toString(sorted), Arrays.toString(arr));
+	}
+	
+	@Test (timeout = 1000)
+	public void testRadixSort() {
+		int[] arr = makePrimIntArray();
+		arr = (int[]) Sort.radixsort((int[]) arr);
+		assertEquals(SORTED_MAKE_INT_ARRAY, Arrays.toString(arr));
+	}
 
+	@Test (timeout = 5000)
+	public void testRadixSortBash() {
+		int[] arr = createGodAwfulPrimArray();
+		int[] sorted = new int[arr.length];
+		for (int i = 0; i < arr.length; i++)
+			sorted[i] = arr[i];
+		Arrays.sort(sorted);
+		
+		arr = Sort.radixsort(arr);
+		assertEquals(Arrays.toString(sorted), Arrays.toString(arr));
+	}
+	
+	
+	
+	/*
+	 * Utilities
+	 */
+	
 	private Integer[] makeIntArray(){
 		return new Integer[] {5, 4, 2, 9, 11, 2, 0, -1, 1};
+	}
+	
+	private int[] makePrimIntArray(){
+		return new int[] {5, 4, 2, 9, 11, 2, 0, -1, 1};
 	}
 	
 	private Integer[] makeSimpleIntArray(){
@@ -125,7 +163,15 @@ public class SortTest {
 		Integer[] toReturn = new Integer[500];
 		Random rand = new Random();
 		for (int i = 0; i < 500; i++)
-			toReturn[i] = rand.nextInt(500);
+			toReturn[i] = rand.nextInt(250) - 500;
+		return toReturn;
+	}
+	
+	private int[] createGodAwfulPrimArray(){
+		int[] toReturn = new int[500];
+		Random rand = new Random();
+		for (int i = 0; i < 500; i++)
+			toReturn[i] = rand.nextInt(1000) - 500;
 		return toReturn;
 	}
 	
