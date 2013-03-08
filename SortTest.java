@@ -46,9 +46,12 @@ public class SortTest {
 	@Test (timeout = 1000)
 	public void testStableBubbleSortBash() {
 		StevenInteger[] arr = createGodAwfulStevenIntArray();
-		System.out.println();
-		Arrays.sort(arr);
-		assertEquals(Arrays.toString(arr), Arrays.toString(arr));
+		StevenInteger[] arr2 = new StevenInteger[arr.length];
+		for (int i = 0; i < arr.length; i++)
+			arr2[i] = arr[i];
+		Arrays.sort(arr2);
+		Sort.bubblesort(arr);
+		assertEquals(Arrays.toString(arr2), Arrays.toString(arr));
 	}
 	
 	/*
