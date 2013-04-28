@@ -1,0 +1,124 @@
+import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+
+public class ECThreeTests {
+  
+	private static Dynamic dynam;
+	
+	@BeforeClass
+	public static void setUp() {
+		dynam = new Dynamic();
+	}
+
+	@Test
+	public void testSubSeq() { 
+		assertEquals(4, dynam.lcs("stufff", "blahuhhhhhhhfhhhhhhffhh"));	
+	}
+	
+	@Test
+	public void testSubSeq2() {
+		assertEquals(3, dynam.lcs("abcqqqqqqq", "dddddaddddddbddddc"));
+	}
+	
+	@Test
+	public void testSubSeq3() {
+		assertEquals(3, dynam.lcs("afgdgfsfgdfgs", "oooaoooss"));
+	}
+	
+	@Test
+	public void testEdit() {
+		assertEquals(4, dynam.edit("kitten", "sitting"));
+	}
+	
+	@Test
+	public void testEdit2() {
+		assertEquals(1, dynam.edit("stuffa", "dtuffs"));
+	}
+	
+	@Test
+	public void testEdit3() {
+		assertEquals(2, dynam.edit("ababb", "bbab"));
+	}
+	
+	@Test
+	public void testEdit4() {
+		assertEquals(14, dynam.edit("sally sells seashells","by the seashore"));
+	}
+	
+	@Test
+	public void testEdit5() {
+		assertEquals(3, dynam.edit("Zeil","trials"));
+	}
+	
+	@Test
+	public void testShop() {
+		int[] w = {3, 100, 7};
+		int[] v = {5, 200, 9};
+		int max = 197;
+		assertEquals(360, dynam.shop(w, v, max));
+	}
+	
+	@Test
+	public void testShop2() {
+		int[] w = {2, 6, 3, 3, 9, 7, 3};
+		int[] v = {1, 3, 2, 8, 4, 2, 2};
+		int max = 77;
+		assertEquals(201, dynam.shop(w, v, max));
+	}
+	
+	@Test
+	public void testMatrix() {
+		int[] test = new int[5];
+		test[0] = 5;
+		test[1] = 100;
+		test[2] = 70;
+		test[3] = 3;
+		assertEquals(22500,dynam.matrix(test));
+	}
+	
+	@Test
+	public void testMatrix2() { // 1, 2, 3, 4, 500, 6, 7
+		int[] test = new int[8];
+		test[0] = 1;
+		test[1] = 2;
+		test[2] = 3;
+		test[3] = 4;
+		test[4] = 500;
+		test[5] = 6;
+		test[6] = 7;
+		assertEquals(5060,dynam.matrix(test));
+	}
+	
+	@Test
+	public void testMatrix3() { // 37, 22, 107, 8, 99, 17, 20g
+		int[] test = new int[8];
+		test[0] = 37;
+		test[1] = 22;
+		test[2] = 107;
+		test[3] = 8;
+		test[4] = 99;
+		test[5] = 17;
+		test[6] = 20;
+		assertEquals(47448,dynam.matrix(test));
+	}
+	
+	@Test
+	public void testRob() {
+		int[] w = {3, 100, 7};
+		int[] v = {5, 200, 9};
+		int max = 99;
+		assertEquals(14, dynam.robbers(w, v, max));
+	}
+	
+	@Test
+	public void testRob2() {
+		int[] w = {2, 6, 3, 3, 9, 7, 3};
+		int[] v = {1, 3, 2, 8, 4, 2, 2};
+		int max = 20;
+		assertEquals(17, dynam.robbers(w, v, max));
+	}
+
+}
